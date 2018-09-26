@@ -13,16 +13,12 @@ namespace ColorPallete.ViewModel
 
     public class ViewModel
     { 
-        public ObservableCollection<ColorTrajectory> MyItems { get; set; }
-
-        public List<string> ColorTypes
-        {
-            get { return new List<string> { "BlueColor", "GreenColor", "RedColor" }; }
-        }
+        public List<ColorTrajectory> MyItems { get; set; }
 
         public ViewModel()
         {
-            this.MyItems = new ObservableCollection<ColorTrajectory>
+            MyItems = new List<ColorTrajectory>();
+            /*
             {
                 //new ColorTrajectory{ Name = "Blue", Color = "Blue"},
                 //new ColorTrajectory{ Name = "Green", Color = "Green"},
@@ -43,36 +39,43 @@ namespace ColorPallete.ViewModel
                 new ColorTrajectory{ Name="Red3",Color=new Color(){ A = 255, B = 0, G = 0, R = 200} },
                 new ColorTrajectory{ Name="Red4",Color=new Color(){ A = 255, B = 0, G = 0, R = 250} }
             };
-            /*
-            ColorList = new List<ColorTrajectory>();
-            ColorList.Add(new ColorTrajectory()
+            */
+            
+            //MyItems = new List<ColorTrajectory>();
+            MyItems.Add(new ColorTrajectory()
             {
-                Color = new Color() { A = 0, B = 255, G = 0, R = 0 },
+                Color = new Color() { A = 255, B = 255, G = 0, R = 0 },
                 Name = "Blue"
             });
-            ColorList.Add(new ColorTrajectory()
+            MyItems.Add(new ColorTrajectory()
             {
-                Color = new Color() { A = 0, B = 0, G = 255, R = 0 },
+                Color = new Color() { A = 255, B = 0, G = 255, R = 0 },
                 Name = "Green"
             });
-            ColorList.Add(new ColorTrajectory()
+            MyItems.Add(new ColorTrajectory()
             {
-                Color = new Color() { A = 0, B = 0, G = 0, R = 255 },
+                Color = new Color() { A = 255, B = 0, G = 0, R = 255 },
                 Name = "Red"
             });
-            ColorList.Add(new ColorTrajectory()
+            MyItems.Add(new ColorTrajectory()
             {
-                Color = new Color() { A = 0, B = 255, G = 255, R = 255 },
+                Color = new Color() { A = 255, B = 255, G = 255, R = 255 },
                 Name = "White"
             });
-            */
+
+            //MyItems[2].Color = new Color() { A = 255, B = 255, G = 255, R = 255 };
         }
 
-        private List<ColorTrajectory> _colorList;
-        public List<ColorTrajectory> ColorList
+        public ViewModel(List<ColorTrajectory> ColorList)
         {
-            get { return _colorList; }
-            set { _colorList = value; }
+            MyItems = ColorList;
         }
+
+        //private List<ColorTrajectory> _colorList;
+        //public List<ColorTrajectory> ColorList
+        // {
+        //     get { return _colorList; }
+        //     set { _colorList = value; }
+        // }
     }
 }

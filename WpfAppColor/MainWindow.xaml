@@ -4,29 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorPallete"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="400">
-    <Grid>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding MyItems}" AutoGenerateColumns="False">
+    <Grid Name="Grid1">
+        <xctk:ColorPicker x:Name="_colorPicker" VerticalAlignment="Top" />
+        <DataGrid Name="dataGrid1" Grid.Row="1" ItemsSource="{Binding MyItems}" AutoGenerateColumns="False">
             <DataGrid.Columns>
+
                 <DataGridTextColumn Header="ColorName" Binding="{Binding Name}" Width="*">
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="50" >
-                    <DataGridTextColumn.CellStyle>
-                        <Style TargetType="DataGridCell">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{Binding Color}"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </DataGridTextColumn.CellStyle>
-                </DataGridTextColumn>
-                <DataGridTemplateColumn Header="Color"  Width="50">
+                
+                <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox SelectedItem="{Binding Color}" ItemsSource="{Binding DataContext.ColorTypes, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
 
+                        <DataTemplate>
+                            <Button Width="100" Height="30"  x:Name="button1"  Click="Button_Click">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="{Binding Color}"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
