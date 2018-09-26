@@ -16,7 +16,7 @@ namespace ColorPallete.ViewModel
         public Color Color { get; set; }
         public int Position { get; set; }
     }
-
+    //NEW CODE
     public class ViewModel
     { 
         public List<ColorTrajectory> MyItems { get; set; }
