@@ -11,10 +11,16 @@ namespace ColorPallete.ViewModel
         public string Name { get; set; }
     }
 
+    public class NewColor
+    {
+        public Color Color { get; set; }
+        public int Position { get; set; }
+    }
+
     public class ViewModel
     { 
         public List<ColorTrajectory> MyItems { get; set; }
-
+        public NewColor NewColor { get; set; }
         public ViewModel()
         {
             MyItems = new List<ColorTrajectory>();

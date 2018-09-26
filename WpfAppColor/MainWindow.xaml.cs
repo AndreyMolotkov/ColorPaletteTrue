@@ -58,7 +58,7 @@ namespace ColorPallete
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //int index = this.dataGrid1.SelectedIndex;
-            taskWindow taskWindow = new taskWindow(this.dataGrid1.SelectedIndex);
+            taskWindow taskWindow = new taskWindow();
             taskWindow.Owner = this;
             taskWindow.Show();
             

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ColorPallete;
+using System.ComponentModel;
 
 namespace WpfAppColor
 {
@@ -20,10 +21,10 @@ namespace WpfAppColor
     {
         public string ViewModel { get; set; }
 
-        public taskWindow(int index)
+        public taskWindow()
         {
             InitializeComponent();
-            int ColumnIndex = index;
+            
             
         }
 
@@ -34,20 +35,35 @@ namespace WpfAppColor
             Block1.Background = new SolidColorBrush((Color)canvass.SelectedColor);
             
 
-            ColorPallete.ViewModel.ViewModel OldViewModel = (ColorPallete.ViewModel.ViewModel)Owner.DataContext;
-            List<ColorPallete.ViewModel.ColorTrajectory> NewColorList = OldViewModel.MyItems;
-            MainWindow MyWindow = (MainWindow)Owner;
-            NewColorList[MyWindow.dataGrid1.SelectedIndex].Color = (Color)canvass.SelectedColor;
-            ColorPallete.ViewModel.ViewModel NewViewContext = new ColorPallete.ViewModel.ViewModel(NewColorList);
-            Owner.DataContext = null;
-            Owner.DataContext = NewViewContext;
-            
-            
+           
+
+
+
             //Owner.Background = new SolidColorBrush((Color)canvass.SelectedColor);
             //Owner.Content= new SolidColorBrush((Color)canvass.SelectedColor);
             ///DataGrid.BackgroundProperty = new SolidColorBrush((Color)canvass.SelectedColor);
             //this.DataContext = new ViewModel.ViewModel();
-            
+
         }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            ColorPallete.ViewModel.ViewModel OldViewModel = (ColorPallete.ViewModel.ViewModel)Owner.DataContext;
+            List<ColorPallete.ViewModel.ColorTrajectory> NewColorList = OldViewModel.MyItems;
+
+
+            MainWindow MyWindow = (MainWindow)Owner;
+            //try
+            //{
+            NewColorList[MyWindow.dataGrid1.SelectedIndex].Color = (Color)canvass.SelectedColor;
+            //}
+            //catch { }
+
+            ColorPallete.ViewModel.ViewModel NewViewContext = new ColorPallete.ViewModel.ViewModel(NewColorList);
+            Owner.DataContext = null;
+            Owner.DataContext = NewViewContext;
+        }
+
+
     }
 }
